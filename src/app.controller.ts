@@ -17,6 +17,7 @@ export class AppController {
   @Patch(':id')
   async update(@Param('id') id: string, @Body() body: BirdhouseUpdateDto) {
     await this.appService.update(id, body);
+    return this.appService.find(id);
   }
 
   @Post(':id/residency')
@@ -25,6 +26,7 @@ export class AppController {
     @Body() body: BirdhouseResidencyUpdateDto,
   ) {
     await this.appService.updateResidency(id, body);
+    return this.appService.find(id);
   }
 
   @Get(':id')
